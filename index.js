@@ -14,13 +14,8 @@ const axios = require('axios');
 
 
 app.get('/', (req, res) => {
-    const data = {
-      name: 'Brittany',
-      isAwesome: false
-    };
-  
-    res.json(data);
-  });
+    res.send('Hello World!');
+});
 
 
 /**
