@@ -6,6 +6,7 @@ import {
   Route,
   useLocation
 } from 'react-router-dom';
+import styled from 'styled-components/macro';
 
 import { accessToken, logout, getCurrentUserProfile } from './spotify';
 
@@ -17,6 +18,7 @@ function App() {
 
   useEffect(() => {
     document.title = "MusicHub"
+    document.getElementById('root').scrollIntoView({behavior: 'smooth' })
 
     setToken(accessToken);
 
@@ -33,9 +35,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         {!token ? (
-        <a className="App-link" href="http://localhost:8888/login">
-          Log in to Spotify
-        </a>
+          <StyledLoginButton href="http://localhost:8888/login">
+            Log in to Spotify
+          </StyledLoginButton>      
         ) : (
           <Router>
             <ScrollToTop />
@@ -68,16 +70,16 @@ function App() {
                   <>
                     <button onClick={logout}>Log Out</button>
 
-                    {profile}
                     {profile && (
                       <div>
-                        <h1>{profile.display_name}</h1>
-                        <p>{profile.followers.total} Followers</p>
-                        {profile.images.length && profile.images[0].url && (
-                          <img src={profile.images[0].url} alt="Avatar" />
-                        )}
+                      <h1>{profile.display_name}</h1>
+                      <p>{profile.followers.total} Followers</p>
+                      {profile.images.length && profile.images[0].url && (
+                        <img src={profile.images[0].url} alt="Avatar" />
+                      )}
                       </div>
                     )}
+
                   </>
                 }
               />
@@ -87,7 +89,12 @@ function App() {
       </header>
     </div>
   );
+
+
+
+
 }
+
 
 // Scroll to top of page when changing routes
 // https://reactrouter.com/web/guides/scroll-restoration/scroll-to-top
@@ -100,5 +107,16 @@ function ScrollToTop() {
 
   return null;
 }
+
+
+
+const StyledLoginButton = styled.a`
+  background-color: green;
+  color: white;
+  padding: 10px 20px;
+  margin: 20px auto;
+  border-radius: 30px;
+  display: inline-block;
+`;
 
 export default App;
