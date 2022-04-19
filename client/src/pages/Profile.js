@@ -72,7 +72,7 @@ const Profile = () => {
                         <TrackList tracks={topTracks.items.slice(0, 10)} />
                     </SectionWrapper>
 
-                    <SectionWrapper title="Playlists" seeAllLink="/playlists">
+                    <SectionWrapper title="Public Playlists" seeAllLink="/playlists">
                         <PlaylistsGrid playlists={playlists.items.slice(0, 10)} />
                     </SectionWrapper>
                 </main>

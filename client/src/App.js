@@ -11,7 +11,9 @@ import {
   Login,
   Profile,
   TopArtists,
-  TopTracks, 
+  TopTracks,
+  Playlists,
+  Playlist, 
 } from './pages';
 
 import { GlobalStyle } from './styles';
@@ -69,12 +71,8 @@ function App() {
             <Routes>
               <Route path="/top-artists" element={<TopArtists />} />
               <Route path="/top-tracks" element={<TopTracks />} />
-              <Route path="/playlists/:id">
-                Playlist
-              </Route>
-              <Route path="playlists">
-                Playlists
-              </Route>
+              <Route path="/playlists/:id" element={<Playlist />} />
+              <Route path="playlists" element={<Playlists />} />
               <Route path="/" element={<Profile />} />
 
             </Routes>
