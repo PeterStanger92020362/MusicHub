@@ -43,6 +43,7 @@ function App() {
 
   useEffect(() => {
     setToken(accessToken);
+    document.title = "MusicHub"
   }, []);
 
   return (
