@@ -6,7 +6,14 @@ import {
   useLocation,
 } from 'react-router-dom';
 import { accessToken, logout } from './spotify';
-import { Login, Profile } from './pages';
+
+import { 
+  Login,
+  Profile,
+  TopArtists,
+  TopTracks, 
+} from './pages';
+
 import { GlobalStyle } from './styles';
 import styled from 'styled-components/macro';
 
@@ -60,12 +67,8 @@ function App() {
             <ScrollToTop />
 
             <Routes>
-              <Route path="/top-artists">
-                Top Artists
-              </Route>
-              <Route path="/top-tracks">
-                Top Tracks
-              </Route>
+              <Route path="/top-artists" element={<TopArtists />} />
+              <Route path="/top-tracks" element={<TopTracks />} />
               <Route path="/playlists/:id">
                 Playlist
               </Route>
