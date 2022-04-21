@@ -14,7 +14,6 @@ const axios = require('axios');
 
 
 
-
 /**
  * Generates a random string containing numbers and letters
  * @param  {number} length The length of the string
