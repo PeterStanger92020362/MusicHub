@@ -13,6 +13,10 @@ const querystring = require('querystring');
 const axios = require('axios');
 
 
+const connection = require("./db");
+
+connection()
+
 
 /**
  * Generates a random string containing numbers and letters
