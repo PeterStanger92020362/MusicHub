@@ -17,9 +17,7 @@ const connection = require("./db");
 const userRoutes = require('./routes/users');
 const authRoutes = require("./routes/auth");
 const trackRoutes = require('./routes/tracks');
-
-
-
+const playlistRoutes = require('./routes/playlists');
 
 connection()
 app.use(cors());
@@ -28,6 +26,7 @@ app.use(express.json());
 app.use("/api/users", userRoutes);
 app.use("/api/login", authRoutes);
 app.use("/api/tracks", trackRoutes);
+app.use(("/api/playlists", playlistRoutes));
 
 /**
  * Generates a random string containing numbers and letters
