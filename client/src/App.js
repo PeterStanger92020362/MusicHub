@@ -8,7 +8,7 @@ import {
 import { accessToken, logout } from './spotify';
 
 import { 
-  Login,
+  SpotifyLogin,
   Profile,
   TopArtists,
   TopTracks,
@@ -60,7 +60,7 @@ function App() {
       <GlobalStyle />
 
       {!token ? (
-        <Login />
+        <SpotifyLogin />
       ) : (
         <>
           <StyledLogoutButton onClick={logout}>Log Out</StyledLogoutButton>

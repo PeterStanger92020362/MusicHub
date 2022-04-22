@@ -8,6 +8,11 @@ const REDIRECT_URI = process.env.REDIRECT_URI;
 const express = require('express');
 const app = express();
 const port = 8888;
+
+app.listen(port, () => {
+  console.log(`Express app listening at http://localhost:${port}`);
+});
+
 const cors = require('cors');
 const querystring = require('querystring');
 const axios = require('axios');
@@ -24,7 +29,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/users", userRoutes);
-app.use("/api/login", authRoutes);
+app.use("/api/auth", authRoutes);
 app.use("/api/tracks", trackRoutes);
 app.use(("/api/playlists", playlistRoutes));
 
@@ -45,7 +50,7 @@ const generateRandomString = length => {
   
 const stateKey = 'spotify_auth_state';
   
-app.get('/login', (req, res) => {
+app.get('/spotifylogin', (req, res) => {
     const state = generateRandomString(16);
     res.cookie(stateKey, state);
   
@@ -127,8 +132,4 @@ app.get('/refresh_token', (req, res) => {
       .catch(error => {
         res.send(error);
       });
-  });
-
-app.listen(port, () => {
-    console.log(`Express app listening at http://localhost:${port}`);
   });

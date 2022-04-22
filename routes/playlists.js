@@ -12,7 +12,7 @@ router.post("/", auth, async (req, res) => {
     if (error) return res.status(400).send({ message: error.details[0].message });
 
     const user = await User.findById(req.user._id);
-    const playlist = await Playlist({...req.body, user: user._id}).save();
+    const playlist = await Playlist({ ...req.body, user: user._id }).save();
     user.playlists.push(playlist._id);
     await user.save();
 
@@ -46,7 +46,7 @@ router.put("/edit/:id", [validObjectId, auth], async (req, res) => {
 });
 
 // add track to playlist
-router.put("/add-song",auth, async (req,res)=>{
+router.put("/add-track",auth, async (req,res)=>{
     const schema = Joi.object({
         playlistId: Joi.string().required(),
         trackId: Joi.string().required()
@@ -67,7 +67,7 @@ router.put("/add-song",auth, async (req,res)=>{
 });
 
 // delete track from playlist
-router.put("/remove-song", auth, async (req,res)=>{
+router.put("/remove-track", auth, async (req,res)=>{
     const schema = Joi.object({
         playlistId: Joi.string().required(),
         trackId: Joi.string().required()

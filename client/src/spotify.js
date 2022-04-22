@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 // localStorage keys
 const LOCALSTORAGE_KEYS = {
     accessToken: 'spotify_access_token',

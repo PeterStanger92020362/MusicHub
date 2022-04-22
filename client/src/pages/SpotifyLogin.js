@@ -24,12 +24,12 @@ const StyledLoginButton = styled.a`
   }
 `;
 
-const Login = () => (
+const SpotifyLogin = () => (
     <StyledLoginContainer>
-        <StyledLoginButton href="http://localhost:8888/login">
+        <StyledLoginButton href="http://localhost:8888/spotifylogin">
             Log in to Spotify
         </StyledLoginButton>
     </StyledLoginContainer>
 );
 
-export default Login;
+export default SpotifyLogin;
