@@ -8,15 +8,18 @@ const REDIRECT_URI = process.env.REDIRECT_URI;
 const express = require('express');
 const app = express();
 const port = 8888;
-
+const cors = require('cors');
 const querystring = require('querystring');
-
 const axios = require('axios');
+
+const connection = require("./db");
 
 const userRoutes = require('./routes/users');
 const authRoutes = require("./routes/auth");
-const connection = require("./db");
-const cors = require('cors');
+const trackRoutes = require('./routes/tracks');
+
+
+
 
 connection()
 app.use(cors());
@@ -24,6 +27,7 @@ app.use(express.json());
 
 app.use("/api/users", userRoutes);
 app.use("/api/login", authRoutes);
+app.use("/api/tracks", trackRoutes);
 
 /**
  * Generates a random string containing numbers and letters
