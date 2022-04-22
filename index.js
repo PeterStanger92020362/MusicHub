@@ -1,4 +1,5 @@
 require('dotenv').config();
+require("express-async-errors");
 
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
@@ -12,11 +13,17 @@ const querystring = require('querystring');
 
 const axios = require('axios');
 
-
+const userRoutes = require('./routes/users');
+const authRoutes = require("./routes/auth");
 const connection = require("./db");
+const cors = require('cors');
 
 connection()
+app.use(cors());
+app.use(express.json());
 
+app.use("/api/users", userRoutes);
+app.use("/api/login", authRoutes);
 
 /**
  * Generates a random string containing numbers and letters
